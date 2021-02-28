@@ -1,0 +1,38 @@
+{
+  "searchBox":{
+    "FindBy": "xpath",
+    "Value": "//input[@id='SimpleSearchForm_SearchTerm']"
+  },
+  "searchButton":{
+    "FindBy": "xpath",
+    "Value": "//i[@id='search-black']"
+  },
+  "breadCrumbSearch":{
+    "FindBy": "xpath",
+    "Value": "//li[contains(text(),'Buscar Samsung')]"
+  },
+  "show": {
+    "FindBy": "xpath",
+    "Value": "//div[@class='sorting_controls']//div[2]//td[contains(@class,'dijitArrowButton')]"
+  },
+  "6": {
+    "FindBy": "xpath",
+    "Value": "//td[contains(text(),'6')]"
+  },
+  "12": {
+    "FindBy": "xpath",
+    "Value": "//td[contains(text(),'12')]"
+  },
+  "18": {
+    "FindBy": "xpath",
+    "Value": "//td[contains(text(),'18')]"
+  },
+  "products": {
+    "FindBy": "xpath",
+    "Value": "//div[@class='product_listing_container']//div[@class='plpcard']"
+  },
+  "productNames": {
+    "FindBy": "xpath",
+    "Value": "//div[@class='product_listing_container']//div[@class='plpcard']//div[@class='product']//div[@class='product-name-tall']"
+  }
+}
