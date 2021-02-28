@@ -10,5 +10,5 @@ Feature: Search products in Claro Tienda
         | brand    |
         | Samsung  |
         | Motorola |
-        | LG       |
-        | Nokia    |
+#        | LG       |
+#        | Nokia    |

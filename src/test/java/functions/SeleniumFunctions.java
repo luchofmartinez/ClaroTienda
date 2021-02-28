@@ -2,7 +2,6 @@ package functions;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,18 +41,18 @@ public class SeleniumFunctions {
     public static JSONObject readPageElements(String elementName) throws Exception {
         JSONObject element = null;
 
-        JSONObject jsonObject = (JSONObject) readJSON("src/test/resources/pages/searchElements.json");
+        JSONObject jsonObject = (JSONObject) readJSON("src/test/resources/pages/claroPage.json");
         element = (JSONObject) jsonObject.get(elementName);
         return element;
 
     }
 
-    public static By getElement(String element) throws Exception {
+    public static By getElement(String element, String valueToReplace) throws Exception {
         By result = null;
         JSONObject Entity = readPageElements(element);
 
         GetFieldBy = (String) Entity.get("FindBy");
-        ValueToFind = (String) Entity.get("Value");
+        ValueToFind = String.format((String) Entity.get("Value"), valueToReplace);
 
         if ("className".equalsIgnoreCase(GetFieldBy)) {
             result = By.className(ValueToFind);
@@ -76,18 +75,21 @@ public class SeleniumFunctions {
     }
 
     public void Click(String nameElement) throws Exception {
-        By element = SeleniumFunctions.getElement(nameElement);
+        By element = SeleniumFunctions.getElement(nameElement, null);
         driver.findElement(element).click();
     }
 
     public void Write(String nameElement, String text) throws Exception {
-        By element = SeleniumFunctions.getElement(nameElement);
+        By element = SeleniumFunctions.getElement(nameElement, null);
         driver.findElement(element).sendKeys(text);
     }
 
     public Boolean CheckElementsName(String elementName, String brand) throws Exception {
-        By element = SeleniumFunctions.getElement(elementName);
+        By element = SeleniumFunctions.getElement(elementName, null);
         List<WebElement> elementsList = driver.findElements(element);
+        if(brand.contains("Motorola")){
+            brand = "Moto";
+        }
         for (WebElement elementText :
                 elementsList) {
             if(!elementText.getText().contains(brand)){
@@ -95,5 +97,10 @@ public class SeleniumFunctions {
             }
         }
         return true;
+    }
+
+    public void Filter(String filterBrand, String brand) throws Exception {
+        By element = SeleniumFunctions.getElement(filterBrand, brand);
+        driver.findElement(element).click();
     }
 }

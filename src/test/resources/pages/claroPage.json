@@ -7,9 +7,13 @@
     "FindBy": "xpath",
     "Value": "//i[@id='search-black']"
   },
+  "filterBrand":{
+    "FindBy": "xpath",
+    "Value": "//fieldset[@id='MARCA']//ul//li//span[@class='outline']//span[contains(text(),'%s')]"
+  },
   "breadCrumbSearch":{
     "FindBy": "xpath",
-    "Value": "//li[contains(text(),'Buscar Samsung')]"
+    "Value": "//li[contains(text(),'Buscar %s')]"
   },
   "show": {
     "FindBy": "xpath",
